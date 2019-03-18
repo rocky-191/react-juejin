@@ -1,0 +1,50 @@
+@import '../main.less';
+.pageHeader{
+    height: 60px;
+    line-height: 60px;
+    border-bottom: 1px solid #f1f1f1;
+    background: @colorF;
+    color: #909090;
+    .container{
+        .ct;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        height: 100%;
+        justify-content: space-between;
+    }
+    .logo{
+        min-width: 98px;
+        margin-right: 20px;
+    }
+    .main-nav{
+        height: 100%;
+        flex: 1 0 auto;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        justify-content: space-between;
+        .ant-btn{
+            background: @primary;
+            color: @colorF;
+        }
+        ul{
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            margin: 0;
+            li{
+                padding:0 15px;
+                cursor: pointer;
+                &:hover{
+                    color: @primary;
+                }
+            }
+            li.activeLi{
+                color: @primary;
+            }
+        }
+    }
+}
