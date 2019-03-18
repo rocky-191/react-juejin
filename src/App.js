@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import appReducer from './reducers/index.js';
-import Header from './header/index'
+import Header from './view/header/index'
 import './App.css';
 
 // 使用合并后的那个Reducer
