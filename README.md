@@ -1,6 +1,6 @@
 ## 项目介绍
 
-个人项目，计划使用React+redux+React-router构建精简版本的掘金网站，不定期更新中。
+个人项目，计划使用React+redux+React-router构建精简版本的掘金网站，UI库使用了ant-design，不定期更新中。
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

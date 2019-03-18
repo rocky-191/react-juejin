@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Affix,Input,Menu, Dropdown, Button, Icon, message,Badge,Avatar } from 'antd';
+import { connect } from 'react-redux';
 import Nav from './nav';
 import './header.less'
 
@@ -54,5 +55,13 @@ class Header extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        count: state.pageHeaderReducer.notificationCount
+    }
+}
+
+Header=connect(mapStateToProps)(Header)
 
 export default Header;
