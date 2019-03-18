@@ -8,8 +8,11 @@ ul,li{
 }
 
 .App {
-  background: #fff;
   width: 100%;
   min-width: 980px;
   margin: 0 auto
+}
+
+body{
+  background: #f4f5f5;
 }

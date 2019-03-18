@@ -1,0 +1,44 @@
+@import '../../main.less';
+
+.home-container{
+    .home-nav{
+        height: 46px;
+        line-height: 46px;
+        border-bottom: @border;
+        background-color: #fff;
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+        transition: all .2s;
+        transform: translateZ(0);
+        nav{
+            .ct;
+            .list;
+            ul{
+                .list;
+                justify-content: center;
+                height: 100%;
+                margin: 0;
+                li{
+                    padding:0 15px;
+                    cursor: pointer;
+                    a{
+                        color: #666;
+                        text-decoration: none;
+                    }
+                    &:hover{
+                        a{
+                            color:@primary;
+                        }
+                    }
+                }
+                li.activeLi{
+                    a{
+                        color:@primary;
+                    }
+                }
+            }
+            a{
+                height: 100%;
+            }
+        }
+    }
+}

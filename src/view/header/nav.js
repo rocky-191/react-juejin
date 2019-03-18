@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import './header.less'
 class Nav extends Component {
     constructor(props) {
@@ -8,40 +9,53 @@ class Nav extends Component {
                 {
                     text:'首页',
                     isActived:true,
-                    path:'1'
+                    path:'/'
                 },
                 {
                     text:'动态',
                     isActived:false,
-                    path:'2'
+                    path:'/dynamic'
                 },
                 {
                     text:'话题',
                     isActived:false,
-                    path:'3'
+                    path:'/topic'
                 },
                 {
                     text:'小册',
                     isActived:false,
-                    path:'4'
+                    path:'/brochure'
                 },
                 {
                     text:'活动',
                     isActived:false,
-                    path:'5'
+                    path:'/activity'
                 }
             ]
         }
     }
 
     handelClick=(i)=>{
-        console.log(i)
+        //console.log(i)
+        let navs=this.state.navs;
+        navs.forEach((item,index)=>{
+            if(index === i){
+                item.isActived=true;
+            }else{
+                item.isActived=false;
+            }
+        });
+        this.setState({
+            navs:navs
+        })
     }
     render() {
         return (
             <ul>
                 {this.state.navs.map((item,index)=>{
-                    return <li key={item.path} className={item.isActived?'activeLi':''} onClick={this.handelClick.bind(this,index)}>{item.text}</li>
+                    return <li key={item.path} className={item.isActived?'activeLi':''} onClick={this.handelClick.bind(this,index)}>
+                                <Link to={item.path}>{item.text}</Link>
+                            </li>
                 })}
             </ul>
         );

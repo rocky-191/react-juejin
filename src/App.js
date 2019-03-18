@@ -3,6 +3,7 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import appReducer from './reducers/index.js';
 import Header from './view/header/index'
+import Main from './view/main/index';
 import './App.css';
 
 // 使用合并后的那个Reducer
@@ -25,6 +26,7 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <Header userImage={this.state.userImage}/>
+          <Main />
         </div>
       </Provider>
     );
