@@ -8,7 +8,7 @@ class HomeDetails extends Component {
     render() {
         return (
             <div>
-                {this.props.params}
+                详情{this.props.tag}
             </div>
         );
     }

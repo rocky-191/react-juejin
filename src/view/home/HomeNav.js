@@ -14,7 +14,7 @@ class HomeNav extends Component {
             <ul>
                 {this.props.tags.map((item,index)=>{
                     return <li key={item.path} className={item.isActived?'activeLi':''} onClick={this.handelClick.bind(this,index)}>
-                        <Link to={`/timeline${item.path}`}>{item.text}</Link>
+                        <Link to={`/timeline/${item.path}`}>{item.text}</Link>
                     </li>
                 })}
             </ul>
