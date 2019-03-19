@@ -26,6 +26,7 @@ class Home extends Component {
     }
     render() {
         let {match}=this.props;
+        const tagType='recommended';
         return (
             <Affix offsetTop={this.state.top}>
                 <div className="home-container">
@@ -36,6 +37,7 @@ class Home extends Component {
                         </nav>
                     </div>
                     <div className="ct">
+                        <Route exact path={match.url} render={(props) => <div><HomeDetails tag={tagType} /></div>}/>
                         <Route path={`/timeline/:tagType`} render={(props) => <div><HomeDetails tag={props.match.params.tagType} /></div>}/>
                     </div>
                 </div>
