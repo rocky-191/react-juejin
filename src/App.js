@@ -14,7 +14,7 @@ class App extends Component {
     super(props);
     this.state={
       //notificationCount:1,
-      userImage:'//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
+      userImage:'//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'//从全局获取
     }
   }
   componentWillMount(){
@@ -25,7 +25,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <Header userImage={this.state.userImage}/>
+          <Header />
           <Main />
         </div>
       </Provider>

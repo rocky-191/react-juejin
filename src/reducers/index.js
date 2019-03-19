@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
 
 import pageHeaderReducer from './pageHeader.js';
-// import aaReducer from './aa.js';
+import imageUserReducer from './userImage';
 
 const appReducer = combineReducers({
     pageHeaderReducer,
-    //aaReducer,
+    imageUserReducer,
 });
 export default appReducer;

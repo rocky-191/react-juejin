@@ -58,7 +58,8 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        count: state.pageHeaderReducer.notificationCount
+        count: state.pageHeaderReducer.notificationCount,
+        userImage:state.imageUserReducer.userImage
     }
 }
 
