@@ -13,13 +13,11 @@ class Home extends Component {
             tags:[
                 {
                     path:'recommended',
-                    text:'推荐',
-                    isActived:true,
+                    text:'推荐'
                 },
                 {
                     path:'following',
-                    text:'关注',
-                    isActived:false,
+                    text:'关注'
                 }
             ]
         }
