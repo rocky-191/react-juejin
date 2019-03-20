@@ -41,7 +41,7 @@ class ArticleList extends Component {
                                 <section className="list-part3">
                                     {item.articleType==='1'?
                                         <div>
-                                            <Statistic value={item.starNum} prefix={<Icon type="like" theme="filled" style={{ fontSize: '14px'}} />} onClick={()=>this.props.editStar(item.id)} />
+                                            <Statistic value={item.starNum} prefix={<Icon type="like" theme="filled" style={{ fontSize: '14px'}} onClick={()=>this.props.editStar(item.id)} />} />
                                             <Statistic value={item.commentNum} prefix={<Icon type="message" theme="filled" style={{ fontSize: '14px'}} onClick={()=>this.props.lookComment(item.id)} />} />
                                             <Popover content={<Qrcode value={window.location.href+'/'+item.id} />} placement="bottom" trigger="click">
                                                 <Icon type="upload" style={{ fontSize: '16px',marginLeft:'10px',borderRight:'none'}} />
