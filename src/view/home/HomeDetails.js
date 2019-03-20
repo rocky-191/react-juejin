@@ -26,7 +26,8 @@ class HomeDetails extends Component {
                     title:'前端构建秘籍',
                     articleImage:'//user-gold-cdn.xitu.io/2019/3/19/169944ad67bc2e6c?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1',
                     starNum:'1',//点赞数
-                    commentNum:'1'//评论数
+                    commentNum:'1',//评论数
+                    articleType:'1',//1代表文章类型为专栏，2代表文章类型为小册
                 },
                 {
                     id:'00002',
@@ -36,7 +37,32 @@ class HomeDetails extends Component {
                     title:'Vue初探',
                     articleImage:'//gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
                     starNum:'1',//点赞数
-                    commentNum:'1'//评论数
+                    commentNum:'1',//评论数
+                    articleType:'1'
+                },
+                {
+                    id:'00003',
+                    author:'css爱好者',
+                    time:'1天前',
+                    tags:['css'],
+                    title:'css绘制各种图形实例',
+                    articleImage:'',
+                    starNum:'10',//点赞数
+                    commentNum:'12',
+                    articleType:'1'
+                },
+                {
+                    id:'00004',
+                    author:'lucefer',
+                    time:'',
+                    tags:[],
+                    title:'WebGL 入门与实践介绍',
+                    articleImage:'//user-gold-cdn.xitu.io/2019/2/25/16922d6d22ff1458?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1',
+                    starNum:'10',//点赞数
+                    commentNum:'12',
+                    articleType:'2',
+                    sellNums:1000,
+                    price:'19.9'
                 }
             ]
         }
@@ -81,11 +107,7 @@ class HomeDetails extends Component {
     //评论
     lookComment=(id)=>{
         console.log('评论',id);
-    }
-
-    //分享
-    shareArticle=(id)=>{
-        console.log('分享',id);
+        window.location.href = `/post/:${id}`;  //window.location.href跳转
     }
 
     //收藏
@@ -100,7 +122,7 @@ class HomeDetails extends Component {
                     <Tag tagsFromServer={this.state.sortTag1} selectedTags={this.handelSelectedTag.bind(this)}/>
                     <Tag tagsFromServer={this.state.sortTag2} selectedTags={this.handelSelectedTag.bind(this)}/>
                 </section>
-                <List data={this.state.articleList} editStar={this.editStar.bind(this)} lookComment={this.lookComment.bind(this)} shareArticle={this.shareArticle.bind(this)} collectArticle={this.collectArticle.bind(this)} />
+                <List data={this.state.articleList} editStar={this.editStar.bind(this)} lookComment={this.lookComment.bind(this)} collectArticle={this.collectArticle.bind(this)} />
             </div>
         );
     }

@@ -50,7 +50,7 @@ class HomeSecondNav extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        userImage:state.imageUserReducer.userImage
+        userImage:state.userReducer.userImage
     }
 }
 

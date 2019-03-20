@@ -4,7 +4,7 @@ let initialState = {
 }
 
 // 2.Reducer
-const userImageReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'CHANGE_USERIMAGE':
             return { ...state, userImage: action.userImage }
@@ -13,4 +13,4 @@ const userImageReducer = (state = initialState, action) => {
     }
 }
 // 3.导出
-export default userImageReducer;
+export default userReducer;

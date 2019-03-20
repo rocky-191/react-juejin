@@ -103,12 +103,10 @@
                 justify-content: space-between;
                 padding: 15px;
                 border-bottom: 1px solid hsla(0,0%,59.2%,.1);
-                article{
-                    cursor: pointer;
-                }
+                cursor: pointer;
                 &:hover{
                     background: #fcfcfc;
-                    .list-part3>i{
+                    .list-part3 i{
                         display: inline-block;
                     }
                 }
@@ -161,7 +159,7 @@
                 }
             }
         }
-        .list-part3{
+        .list-part3>div{
             .list;
             margin-top: 10px;
             justify-content: flex-start;
@@ -196,6 +194,101 @@
                     background: #f7f8fa;
                 }
             }
+            .link-btn{
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                height: 24px;
+                border: 1px solid #edeeef;
+                border-radius: 1px;
+                padding-left: 14px;
+                padding-right: 14px;
+                color: #b3bac1;
+                font-size: 14px;
+                white-space: nowrap;
+            }
+            .link-btn.sale,.link-btn.share{
+                margin-left: -1px;
+            }
+        }
+    }
+    .ant-card-body{
+        padding: 0 16px;
+    }
+    .bookCard{
+        img{
+            height: 72px;
+            width: 52px;
+        }
+        .book-desc{
+            .list;
+            justify-content: space-between;
+            margin-bottom: 0;
+            .try-read{
+                height: 20px;
+                color: #fff;
+                font-size: 12px;
+                padding-left: 5px;
+                line-height: 20px;
+                padding-right: 5px;
+                border-radius: 2px;
+                background-color: #007fff;
+                display: flex;
+                align-items: center;
+                &::after{
+                    width: 0;
+                    height: 0;
+                    content: "";
+                    display: inline-block;
+                    margin-left: 3px;
+                    border-color: transparent transparent transparent #fff;
+                    border-style: solid;
+                    border-width: 3px 0 3px 3px;
+                }
+            }
+        }
+    }
+    .download-card{
+        a{
+            .list;
+            img{
+                margin-right: 8px;
+                width: 50px;
+                height: 50px;
+            }
+            .headline{
+                font-size: 14px;
+                font-weight: 600;
+                color: #333;
+            }
+            .desc{
+                margin-top: 5px;
+                font-size: 12px;
+                color: #909090;
+            }
+        }
+    }
+    .linkCard{
+        img{
+            width: 36px;
+            height: 36px;
+        }
+        .ant-list-item-meta-title{
+            margin: 0;
+            margin-top: 7px;
+            .overflow-ellipsis;
+        }
+        .ant-list-item{
+            border-bottom: none;
+        }
+    }
+}
+
+.ant-popover-inner-content{
+    padding: 0!important;
+    ul{
+        li:hover{
+            background: #f7f8fa;
         }
     }
 }
