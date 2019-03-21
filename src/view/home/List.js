@@ -11,7 +11,8 @@ class ArticleList extends Component {
     }
 
     showArticleInfo=(id)=>{
-        console.log(id);
+        console.log(`文章id值：${id}`);
+        window.location.href='/post/'+id;
     }
 
     render() {
