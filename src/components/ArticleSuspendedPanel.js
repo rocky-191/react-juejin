@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Avatar,Badge,Icon } from 'antd';
+import { Avatar,Badge,Icon,Popover } from 'antd';
 
 class ArticleSuspendedPanel extends Component {
     constructor(props) {
@@ -43,7 +43,7 @@ class ArticleSuspendedPanel extends Component {
             cursor: 'pointer',
             textAlign: 'center'
         }
-
+        const QRCode = require('qrcode.react');
         return (
             <div style={articleSuspendedPanel}>
                 <Badge count={this.props.starCount} overflowCount={this.state.overflowCount} style={badgeSy}>
@@ -66,9 +66,11 @@ class ArticleSuspendedPanel extends Component {
                 <Avatar style={avatarSy1}>
                     <img alt="" src="//b-gold-cdn.xitu.io/v3/static/img/qq.0834411.svg" />
                 </Avatar>
-                <Avatar style={avatarSy1}>
-                    <img alt="" src="//b-gold-cdn.xitu.io/v3/static/img/wechat.63e1ce0.svg" />
-                </Avatar>
+                <Popover content={<QRCode value={window.location.href+'/post/'+this.props.wxShareAddr} />} placement="bottom">
+                    <Avatar style={avatarSy1}>
+                        <img alt="" src="//b-gold-cdn.xitu.io/v3/static/img/wechat.63e1ce0.svg" />
+                    </Avatar>
+                </Popover>
             </div>
         );
     }

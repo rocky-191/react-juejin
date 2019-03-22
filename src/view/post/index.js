@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col,List, Avatar } from 'antd';
-import ArticleSuspendedPanel from '../../components/ArticleSuspendedPanel';
-import CommentList from '../../components/Comment';
-import CommentElement from '../../components/CommentElement';
+import ArticleSuspendedPanel from '@/components/ArticleSuspendedPanel';
+import CommentList from '@/components/Comment';
+import CommentElement from '@/components/CommentElement';
 import RelationArticleList from '../home/List';
+import SideNav from './SideNav';
 import './post.less';
 
 class Post extends Component {
@@ -20,7 +21,10 @@ class Post extends Component {
                     author:'rocky191',
                     editDate:'2019年03月20日',
                     readNum:'1853',
-                    isFocus:true
+                    isFocus:true,
+                    isGroup:true,
+                    allStarNum:100,
+                    allReadNum:2000
                 }],
                 articleText:'文章详情'
             },
@@ -79,13 +83,48 @@ class Post extends Component {
                     commentNum:'1',//评论数
                     articleType:'1'
                 }
+            ],
+            relationArticles:[
+                {
+                    id:'0001',
+                    title:'vue面试题集合',
+                    starNum:'10',
+                    commentNum:'20'
+                },
+                {
+                    id:'0002',
+                    title:'react资料整理',
+                    starNum:'100',
+                    commentNum:'30'
+                }
+            ],
+            articleCatalogue:[
+                {
+                    text:'题记',
+                    children:[
+                        {
+                            text:'标题1'
+                        },
+                        {
+                            text:'标题2'
+                        }
+                    ]
+                },
+                {
+                    text:'安装',
+                    children:[]
+                },
+                {
+                    text:'使用步骤',
+                    children:[]
+                }
             ]
         }
     }
 
     componentDidMount(){
         const {match}=this.props;
-        //初始渲染应该根据用户id和文章id获取实际内容
+        //初始渲染应该根据文章作者id和文章id获取实际内容
         //用户id在初始登录系统的时候存入了全局store
         console.log(`文章id：${match.params.articleId},用户id：${this.props.userId}`);
     }
@@ -124,9 +163,10 @@ class Post extends Component {
     }
 
     render() {
+        const {match}=this.props;
         return (
             <div className="ct marginTop20 position-rel">
-                <ArticleSuspendedPanel starCount={this.state.articleInfo.starCount} commentsCount={this.state.articleInfo.commentsCount} />
+                <ArticleSuspendedPanel starCount={this.state.articleInfo.starCount} commentsCount={this.state.articleInfo.commentsCount} wxShareAddr={match.params.articleId} />
                 <Row gutter={14}>
                     <Col className="gutter-row" span={18}>
                         <div className="article-info">
@@ -156,7 +196,7 @@ class Post extends Component {
                         </div>
                     </Col>
                     <Col className="gutter-row" span={6}>
-                        右侧内容
+                        <SideNav author={this.state.articleInfo.articleList} relationArticles={this.state.relationArticles} articleCatalogue={this.state.articleCatalogue}/>
                     </Col>
                 </Row>
             </div>

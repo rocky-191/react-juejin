@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
 import { Card,List, Avatar } from 'antd';
+import InterestedBrochure from '@/components/InterestedBrochure/index';
+import DownloadApp from '@/components/DownloadApp/index';
 
 class SideNav extends Component {
     constructor(props) {
@@ -14,6 +16,7 @@ class SideNav extends Component {
                     title="掘金优秀作者"
                     style={{ width: '100%' }}
                     hoverable={'true'}
+                    bodyStyle={{padding:'0 16px'}}
                     actions={[<NavLink to='/recommendation/authors/recommended' style={{color:'#007fff'}}>查看更多></NavLink>]}
                     >
                     <List
@@ -30,38 +33,12 @@ class SideNav extends Component {
                         )}
                     />
                 </Card>
-                <Card
-                    title="你可能感兴趣的小册"
-                    style={{ width: '100%',marginTop:'20px' }}
-                    hoverable={'true'}
-                    >
-                    <List
-                        itemLayout="horizontal"
-                        dataSource={this.props.recommendBooks}
-                        className="bookCard"
-                        renderItem={item => (
-                        <List.Item onClick={()=>window.location.href='/book/'+item.id}>
-                            <List.Item.Meta
-                            avatar={<img alt='' src={item.bookImage} />}
-                            title={item.title}
-                            description={<p className="book-desc"><span>{item.sellNum+'人已购买'}</span><span className="try-read">试读</span></p>}
-                            />
-                        </List.Item>
-                        )}
-                    />
-                </Card>
-                <Card style={{ width: '100%',marginTop:'20px' }} hoverable='true' className="download-card" bodyStyle={{padding:'15px'}}>
-                    <NavLink to='/app'>
-                        <img alt='qrcode' src='//b-gold-cdn.xitu.io/v3/static/img/timeline.e011f09.png' />
-                        <div>
-                            <div className="headline">下载掘金客户端</div>
-                            <div className="desc">一个帮助开发者成长的社区</div>
-                        </div>
-                    </NavLink>
-                </Card>
+                <InterestedBrochure recommendBooks={this.props.recommendBooks} />
+                <DownloadApp />
                 <Card
                     style={{ width: '100%',marginTop:'20px' }}
                     hoverable={'true'}
+                    bodyStyle={{padding:'0 16px'}}
                     >
                     <List
                         itemLayout="horizontal"
