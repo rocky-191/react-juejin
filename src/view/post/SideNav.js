@@ -32,6 +32,7 @@ class SideNav extends Component {
                     title="关于作者"
                     style={{ width: '100%' }}
                     hoverable={'true'}
+                    headStyle={{fontSize:'14px',color:'#333'}}
                     bodyStyle={{padding:'0 16px'}}
                     >
                     <List
@@ -74,6 +75,7 @@ class SideNav extends Component {
                 </Card>
                 <Card
                     title="相关文章"
+                    headStyle={{fontSize:'14px',color:'#333'}}
                     style={{ width: '100%',marginTop:'20px'}}
                     hoverable={'true'}
                     bodyStyle={{padding:'0 16px'}}

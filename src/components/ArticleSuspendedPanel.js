@@ -29,7 +29,8 @@ class ArticleSuspendedPanel extends Component {
             cursor:'pointer',
             background:'#fff',
             width:'36px',
-            height:'36px'
+            height:'36px',
+            textAlign:'center'
         }
 
         const panelCircleSy={
@@ -43,21 +44,24 @@ class ArticleSuspendedPanel extends Component {
             cursor: 'pointer',
             textAlign: 'center'
         }
+        const IconSy={
+            color:'#b2bac2'
+        }
         const QRCode = require('qrcode.react');
         return (
             <div style={articleSuspendedPanel}>
                 <Badge count={this.props.starCount} overflowCount={this.state.overflowCount} style={badgeSy}>
                     <div style={panelCircleSy}>
-                        <Icon type="like" theme="filled" style={{color:'#b2bac2'}}/>
+                        <Icon type="like" theme="filled" style={IconSy}/>
                     </div>
                 </Badge>
                 <Badge count={this.props.commentsCount} overflowCount={this.state.overflowCount} style={badgeSy}>
                     <div style={panelCircleSy}>
-                        <Icon type="message" theme="filled" style={{color:'#b2bac2'}}/>
+                        <Icon type="message" theme="filled" style={IconSy}/>
                     </div>
                 </Badge>
                 <div style={panelCircleSy}>
-                    <Icon type="star" theme="filled" style={{color:'#b2bac2'}}/>
+                    <Icon type="star" theme="filled" style={IconSy}/>
                 </div>
                 <label>分享</label>
                 <Avatar style={avatarSy1}>

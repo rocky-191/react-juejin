@@ -26,7 +26,7 @@ class Post extends Component {
                     allStarNum:100,
                     allReadNum:2000
                 }],
-                articleText:'文章详情'
+                articleText:'最近正在学习react，就想着能不能用react做一个项目，平时浏览掘金，就拿掘金练手吧！'
             },
             commentList:[
                 {
@@ -37,7 +37,19 @@ class Post extends Component {
                     authorName:'灵魂摆渡人',
                     userDesc:'前端',
                     commentText:'手动赞',
-                    editDate:1
+                    editDate:1,
+                    reply:[
+                        {
+                            userId:'0004',
+                            starNum:10,
+                            commentNum:5,
+                            userImage:'//mirror-gold-cdn.xitu.io/168e093aa99c9c4ad10?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1',
+                            authorName:'melody_future',
+                            userDesc:'',
+                            commentText:'666',
+                            editDate:2
+                        }
+                    ]
                 },
                 {
                     userId:'0002',
@@ -185,7 +197,6 @@ class Post extends Component {
                             />
                             <article>
                                 <section>{this.state.articleInfo.articleText}</section>
-                                <section>最近正在学习react，就想着能不能用react做一个项目，平时浏览掘金，就拿掘金练手吧！</section>
                                 <CommentList userImage={this.props.userImage} submitComment={this.submitComment.bind(this)} />
                                 <CommentElement commentList={this.state.commentList} />
                             </article>

@@ -25,11 +25,15 @@ class CommentList extends Component {
 
     //评论
     handlePressEnter=()=>{
-        this.props.submitComment(this.state.value);
-        this.setState({
-            value:'',
-            showIconAndBtn:false
-        })
+        if(this.state.value!==''){
+            this.props.submitComment(this.state.value);
+            this.setState({
+                value:'',
+                showIconAndBtn:false
+            })
+        }else{
+            message.warning('还未填写评论哦！');
+        }
     }
 
     render() {

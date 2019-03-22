@@ -13,6 +13,7 @@ class InterestedBrochure extends Component {
                 title="你可能感兴趣的小册"
                 style={{ width: '100%',marginTop:'20px' }}
                 hoverable={'true'}
+                headStyle={{fontSize:'14px',color:'#333'}}
                 bodyStyle={{padding:'0 16px'}}
                 >
                 <List
