@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Row, Col } from 'antd';
+import PublishDynamic from './PublishDynamic';
 import './dynamic.less';
 
 class Dynamic extends Component {
@@ -9,7 +11,14 @@ class Dynamic extends Component {
     render() {
         return (
             <div className="dynamic-container">
-                动态页面内容
+                <Row gutter={14}>
+                    <Col className="gutter-row" span={18}>
+                        <PublishDynamic />
+                    </Col>
+                    <Col className="gutter-row" span={6}>
+                        右侧内容
+                    </Col>
+                </Row>
             </div>
         );
     }
