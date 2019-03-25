@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Affix,Input,Menu, Dropdown, Button, Icon, message,Badge,Avatar } from 'antd';
+import { Affix,Input,Menu, Dropdown, Button, Icon, message,Badge,Avatar,Popover } from 'antd';
 import { connect } from 'react-redux';
 import Nav from './nav';
 import './header.less'
+import SlideMenu from './SlideMenu';
 
 class Header extends Component {
     constructor(props) {
@@ -47,7 +48,9 @@ class Header extends Component {
                                     <Icon type="notification" />
                                 </a>
                             </Badge>
-                            <Avatar icon="user" src={this.props.userImage} />
+                            <Popover placement="bottomRight" content={<SlideMenu userId={this.props.userId} />} trigger="click">
+                                <Avatar icon="user" src={this.props.userImage} style={{cursor:'pointer'}} />
+                            </Popover>
                         </nav>
                     </div>
                 </div>
@@ -59,7 +62,8 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         count: state.pageHeaderReducer.notificationCount,
-        userImage:state.userReducer.userImage
+        userImage:state.userReducer.userImage,
+        userId:state.userReducer.userId
     }
 }
 
