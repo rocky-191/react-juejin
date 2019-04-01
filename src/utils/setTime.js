@@ -1,35 +1,60 @@
 export default {
-    getTimeAgo(timespan){
-        var dateTime = new Date(timespan);
-        var year = dateTime.getFullYear();
-        var month = dateTime.getMonth() + 1;
-        var day = dateTime.getDate();
-        var hour = dateTime.getHours();
-        var minute = dateTime.getMinutes();
-        //var second = dateTime.getSeconds();
-        var now = new Date();
-        var now_new = Math.round(new Date() / 1000);  //typescript转换写法
-        var milliseconds = 0;
-        var timeSpanStr;
+    getTimeAgo(timestamp){
+        // 补全为13位
+        var arrTimestamp = (timestamp + '').split('');
+        for (var start = 0; start < 13; start++) {
+            if (!arrTimestamp[start]) {
+                arrTimestamp[start] = '0';
+            }
+        }
+        timestamp = arrTimestamp.join('') * 1;
 
-        milliseconds = now_new - timespan;
-        if (milliseconds <= 1000 * 60 * 1) {
-            timeSpanStr = '片刻之前';
+        var minute = 1000 * 60;
+        var hour = minute * 60;
+        var day = hour * 24;
+        //var halfamonth = day * 15;
+        var month = day * 30;//一个月按30天算
+        var now = new Date().getTime();
+        var diffValue = now - timestamp;
+
+        // 如果本地时间反而小于变量时间
+        if (diffValue < 0) {
+            return '不久前';
         }
-        else if (1000 * 60 * 1 < milliseconds && milliseconds <= 1000 * 60 * 60) {
-            timeSpanStr = Math.round((milliseconds / (1000 * 60))) + '分钟前';
+
+        // 计算差异时间的量级
+        var monthC = diffValue / month;
+        var weekC = diffValue / (7 * day);
+        var dayC = diffValue / day;
+        var hourC = diffValue / hour;
+        var minC = diffValue / minute;
+
+        // 数值补0方法
+        var zero = function (value) {
+            if (value < 10) {
+                return '0' + value;
+            }
+            return value;
+        };
+
+        // 使用
+        if (monthC > 12) {
+            // 超过1年，直接显示年月日
+            return (function () {
+                var date = new Date(timestamp);
+                return date.getFullYear() + '年' + zero(date.getMonth() + 1) + '月' + zero(date.getDate()) + '日';
+            })();
+        } else if (monthC >= 1) {
+            return parseInt(monthC) + "月前";
+        } else if (weekC >= 1) {
+            return parseInt(weekC) + "周前";
+        } else if (dayC >= 1) {
+            return parseInt(dayC) + "天前";
+        } else if (hourC >= 1) {
+            return parseInt(hourC) + "小时前";
+        } else if (minC >= 1) {
+            return parseInt(minC) + "分钟前";
         }
-        else if (1000 * 60 * 60 * 1 < milliseconds && milliseconds <= 1000 * 60 * 60 * 24) {
-            timeSpanStr = Math.round(milliseconds / (1000 * 60 * 60)) + '小时前';
-        }
-        else if (1000 * 60 * 60 * 24 < milliseconds && milliseconds <= 1000 * 60 * 60 * 24 * 15) {
-            timeSpanStr = Math.round(milliseconds / (1000 * 60 * 60 * 24)) + '天前';
-        }
-        else if (milliseconds > 1000 * 60 * 60 * 24 * 15 && year === now.getFullYear()) {
-            timeSpanStr = month + '-' + day + ' ' + hour + ':' + minute;
-        } else {
-            timeSpanStr = year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
-        }
-        return timeSpanStr;
+        return '片刻之前';
     }
 };
