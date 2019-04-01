@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { List, Avatar, Icon,Popover,message } from 'antd';
+import PersonalPop from '@/components/PersonalPop/index';
 import timeUtil from '@/utils/setTime';
 import './dynamic.less'
 
@@ -16,7 +17,9 @@ class Card extends Component {
                     editTime:'1554085646',
                     content: '新的渐变：角向渐变。可以用来实现饼图',
                     likeNum:20,
-                    commentNum:30
+                    commentNum:30,
+                    following:100,
+                    follower:300
                 },
                 {
                     author: `画渣程序猿`,
@@ -25,7 +28,9 @@ class Card extends Component {
                     editTime:'1554088592',
                     content: '听说海淀黄庄地铁站那边有个医院今天可以体验免费植发，不过要求会 C++。原价好几万的项目啊，去了就是赚了（小声逼逼：注意别让太多人知道了，名额有限',
                     likeNum:0,
-                    commentNum:0
+                    commentNum:0,
+                    following:100,
+                    follower:300
                 }
             ]
         };
@@ -67,6 +72,11 @@ class Card extends Component {
         message.info('分享');
     }
 
+    //关注
+    handleFollow=()=>{
+        message.info('关注');
+    }
+
     render() {
         const IconText = ({ type, text,tag }) => (
             <span onClick={this.handleClick.bind(this,tag)}>
@@ -93,10 +103,10 @@ class Card extends Component {
                     >
                         <List.Item.Meta
                         // avatar={<Avatar size={45} src={item.avatar} />}
-                        avatar={<Popover placement="top" content='个人信息'>
+                        avatar={<Popover placement="top" content={<PersonalPop info={item} handleFollow={this.handleFollow.bind(this)} />}>
                                     <Avatar size={45} src={item.avatar} />
                                 </Popover>}
-                        title={<Popover placement="top" content='个人信息'>
+                        title={<Popover placement="top" content={<PersonalPop info={item} handleFollow={this.handleFollow.bind(this)} />}>
                                     <span style={{cursor:'pointer'}}>{item.author}</span>
                                 </Popover>}
                         description={<div><span>{item.description}</span><span style={{margin:'0 5px'}}>·</span><span>{timeUtil.getTimeAgo(item.editTime)}</span></div>}
