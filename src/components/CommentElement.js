@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { List, Avatar, Icon } from 'antd';
-import moment from 'moment';
+import timeUtil from '@/utils/setTime';
 
 class CommentElement extends Component {
     constructor(props) {
@@ -23,7 +23,7 @@ class CommentElement extends Component {
                     renderItem={item => (
                     <List.Item
                         key={item.userId}
-                        actions={[<span>{moment().subtract(item.editDate, 'days').fromNow()}</span>,<IconText type="like-o" text={item.starNum} />, <IconText type="message" text={item.commentNum} />]}
+                        actions={[<span>{timeUtil.getTimeAgo(item.editDate)}</span>,<IconText type="like-o" text={item.starNum} />, <IconText type="message" text={item.commentNum} />]}
                     >
                         <List.Item.Meta
                         avatar={<a href={'/user/'+item.userId}><Avatar src={item.userImage} /></a>}

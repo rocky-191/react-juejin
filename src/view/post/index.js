@@ -37,7 +37,7 @@ class Post extends Component {
                     authorName:'灵魂摆渡人',
                     userDesc:'前端',
                     commentText:'手动赞',
-                    editDate:1,
+                    editDate:1553011200,
                     reply:[
                         {
                             userId:'0004',
@@ -47,7 +47,7 @@ class Post extends Component {
                             authorName:'melody_future',
                             userDesc:'',
                             commentText:'666',
-                            editDate:2
+                            editDate:1553356800
                         }
                     ]
                 },
@@ -59,7 +59,7 @@ class Post extends Component {
                     authorName:'iceytea',
                     userDesc:'Web前端工程师 @ 能力有限',
                     commentText:'内容很棒，感谢作者。',
-                    editDate:2
+                    editDate:1553529600
                 },
                 {
                     userId:'0003',
@@ -69,7 +69,7 @@ class Post extends Component {
                     authorName:'xuzhanhh',
                     userDesc:'前端搬砖仔jd',
                     commentText:'内容很棒，感谢作者。',
-                    editDate:3
+                    editDate:1553788800
                 }
             ],
             relateList:[
