@@ -16,3 +16,10 @@ ul,li{
 body{
   background: #f4f5f5;
 }
+
+body .ant-spin-spinning{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
