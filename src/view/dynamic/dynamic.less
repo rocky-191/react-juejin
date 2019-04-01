@@ -3,4 +3,51 @@
 .dynamic-container{
     .ct;
     margin-top: 20px;
+    .dynamicClassify{
+        ul{
+            padding-left: 15px;
+            background: @colorF;
+            border-bottom: 1px solid #ddd;
+            .list;
+            justify-content: flex-start;
+            margin-top: 8px;
+            margin-bottom: 0;
+            li{
+                padding: 0 10px;
+                height: 42px;
+                line-height: 42px;
+                position: relative;
+                a{
+                    color: #666;
+                }
+                a.active{
+                    color: @primary;
+                    text-decoration: none;
+                }
+                &::after{
+                    position: absolute;
+                    top: 13px;
+                    right: 1px;
+                    display: inline-block;
+                    content: "";
+                    width: 1px;
+                    height: 16px;
+                    background-color: #ebebeb;
+                }
+                &:last-child::after{
+                    display: none;
+                }
+            }
+        }
+    }
+    .ant-list{
+        background: @colorF;
+        padding: 10px;
+        .ant-list-item-action{
+            .list;
+            li{
+                flex: 1 1 33.333%;
+            }
+        }
+    }
 }
