@@ -3,6 +3,7 @@ import { Row, Col } from 'antd';
 import { NavLink } from 'react-router-dom'
 import PublishDynamic from './PublishDynamic';
 import Card from './Card';
+import SideNav from './SideNav';
 import './dynamic.less';
 
 class Dynamic extends Component {
@@ -43,7 +44,7 @@ class Dynamic extends Component {
                         <Card />
                     </Col>
                     <Col className="gutter-row" span={6}>
-                        右侧内容
+                        <SideNav />
                     </Col>
                 </Row>
             </div>

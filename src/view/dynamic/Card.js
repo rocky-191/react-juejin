@@ -98,7 +98,7 @@ class Card extends Component {
                         key={item.author}
                         actions={[<IconText type="like" text={item.likeNum===0?'赞':item.likeNum} tag='like' />,<IconText type="message" text={item.commentNum===0?'评论':item.commentNum} tag='comment' />, <IconText type="share-alt" text="分享" tag='share' />]}
                         extra={<Popover placement="bottom" content={<PopoverContent author={item.author} />} trigger="click">
-                                    <span style={{cursor:'pointer'}}>...</span>
+                                    <span style={{cursor:'pointer',margin:'10px'}}>...</span>
                                 </Popover>}
                     >
                         <List.Item.Meta
