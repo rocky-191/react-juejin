@@ -8,7 +8,7 @@ class PersonalPop extends Component {
         this.state = {  };
     }
     render() {
-        const { avatar,author,description,following,follower}=this.props.info
+        const { id,avatar,author,description,following,follower,isFollowed}=this.props.info
         return (
             <div className='personalPop'>
                 <div className='part1'>
@@ -28,7 +28,7 @@ class PersonalPop extends Component {
                         <p style={{color:'#999'}}>关注者</p>
                     </li>
                     <li>
-                        <Button onClick={this.props.handleFollow}>关注</Button>
+                        <Button onClick={()=>this.props.handleFollow(id)}>{isFollowed?'已关注':'关注'}</Button>
                     </li>
                 </ul>
             </div>

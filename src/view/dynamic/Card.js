@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { List, Avatar, Icon,Popover,message } from 'antd';
+import { List, Avatar, Icon,Popover,message,Button } from 'antd';
 import PersonalPop from '@/components/PersonalPop/index';
 import timeUtil from '@/utils/setTime';
 import './dynamic.less'
@@ -11,6 +11,7 @@ class Card extends Component {
         this.state = {
             listData:[
                 {
+                    id:'0001',
                     author: `老姚`,
                     avatar: '//user-gold-cdn.xitu.io/2017/7/6/b10fb92f65f744347fea909a8ccabfa0?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1',
                     description: '《JS正则迷你书》作者',
@@ -19,9 +20,11 @@ class Card extends Component {
                     likeNum:20,
                     commentNum:30,
                     following:100,
-                    follower:300
+                    follower:300,
+                    isFollowed:true
                 },
                 {
+                    id:'0002',
                     author: `画渣程序猿`,
                     avatar: '//user-gold-cdn.xitu.io/2017/8/6/772d92fd62679fbff7b74186b20f91a6?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1',
                     description: '饿了么程序员',
@@ -30,7 +33,8 @@ class Card extends Component {
                     likeNum:0,
                     commentNum:0,
                     following:100,
-                    follower:300
+                    follower:300,
+                    isFollowed:false
                 }
             ]
         };
@@ -73,8 +77,17 @@ class Card extends Component {
     }
 
     //关注
-    handleFollow=()=>{
-        message.info('关注');
+    handleFollow=(id)=>{
+        const newList=[...this.state.listData];
+        newList.forEach(item=>{
+            if(item.id===id){
+                item.isFollowed=!item.isFollowed;
+            }
+        });
+        this.setState({
+            listData:[...newList]
+        })
+        //message.info('关注');
     }
 
     render() {
@@ -96,17 +109,28 @@ class Card extends Component {
                     renderItem={item => (
                     <List.Item
                         key={item.author}
-                        actions={[<IconText type="like" text={item.likeNum===0?'赞':item.likeNum} tag='like' />,<IconText type="message" text={item.commentNum===0?'评论':item.commentNum} tag='comment' />, <IconText type="share-alt" text="分享" tag='share' />]}
-                        extra={<Popover placement="bottom" content={<PopoverContent author={item.author} />} trigger="click">
+                        actions={
+                            [
+                                <IconText type="like" text={item.likeNum===0?'赞':item.likeNum} tag='like' />,
+                                <IconText type="message" text={item.commentNum===0?'评论':item.commentNum} tag='comment' />,
+                                <IconText type="share-alt" text="分享" tag='share' />
+                            ]
+                        }
+                        extra={
+                            <div>
+                                {!item.isFollowed && <Button style={{borderColor:'#6cbd45',color:'#6cbd45'}} onClick={()=>this.handleFollow(item.id)}>{item.isFollowed?'已关注':'关注'}</Button>}
+                                <Popover placement="bottom" content={<PopoverContent author={item.author} />} trigger="click">
                                     <span style={{cursor:'pointer',margin:'10px'}}>...</span>
-                                </Popover>}
+                                </Popover>
+                            </div>
+                        }
                     >
                         <List.Item.Meta
                         // avatar={<Avatar size={45} src={item.avatar} />}
-                        avatar={<Popover placement="top" content={<PersonalPop info={item} handleFollow={this.handleFollow.bind(this)} />}>
+                        avatar={<Popover placement="top" content={<PersonalPop info={item} handleFollow={(id)=>this.handleFollow(id)} />}>
                                     <Avatar size={45} src={item.avatar} />
                                 </Popover>}
-                        title={<Popover placement="top" content={<PersonalPop info={item} handleFollow={this.handleFollow.bind(this)} />}>
+                        title={<Popover placement="top" content={<PersonalPop info={item} handleFollow={(id)=>this.handleFollow(id)} />}>
                                     <span style={{cursor:'pointer'}}>{item.author}</span>
                                 </Popover>}
                         description={<div><span>{item.description}</span><span style={{margin:'0 5px'}}>·</span><span>{timeUtil.getTimeAgo(item.editTime)}</span></div>}
