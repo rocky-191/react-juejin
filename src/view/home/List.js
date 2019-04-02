@@ -44,7 +44,7 @@ class ArticleList extends Component {
                                         <div>
                                             <Statistic value={item.starNum} prefix={<Icon type="like" theme="filled" style={{ fontSize: '14px'}} onClick={()=>this.props.editStar(item.id)} />} />
                                             <Statistic value={item.commentNum} prefix={<Icon type="message" theme="filled" style={{ fontSize: '14px'}} onClick={()=>this.props.lookComment(item.id)} />} />
-                                            <Popover content={<Qrcode value={window.location.href+'/'+item.id} />} placement="bottom" trigger="click">
+                                            <Popover content={<Qrcode value={window.location.href+'/'+item.id} />} placement="bottom">
                                                 <Icon type="upload" style={{ fontSize: '16px',marginLeft:'10px',borderRight:'none'}} />
                                             </Popover>
                                             <Icon type="star" theme="filled" style={{ fontSize: '16px'}} onClick={()=>this.props.collectArticle(item.id)} />
@@ -53,7 +53,7 @@ class ArticleList extends Component {
                                             <span className="link-btn buy">购买人数: {item.sellNums}</span>
                                             <span className="link-btn sale">特价: {item.price}元</span>
                                             <span className="link-btn share">
-                                                <Popover content={<Qrcode value={window.location.href+'/'+item.id} />} placement="bottom" trigger="click">
+                                                <Popover content={<Qrcode value={window.location.href+'/'+item.id} />} placement="bottom">
                                                     <Icon type="upload" style={{ fontSize: '16px',marginLeft:'10px',borderRight:'none'}} onClick={()=>this.props.shareArticle(item.id)} />
                                                     分享
                                                 </Popover>
