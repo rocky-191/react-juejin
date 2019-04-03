@@ -98,7 +98,7 @@ class TopicList extends Component {
     render() {
         const Search = Input.Search;
         return (
-            <div style={{background:'#fff'}}>
+            <div style={{background:'#fff',padding:'10px'}}>
                 <Search
                     placeholder="搜索话题"
                     onSearch={value => this.handleSearch(value)}
