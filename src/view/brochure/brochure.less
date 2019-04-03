@@ -1,5 +1,169 @@
 @import '../../main.less';
 
 .brochure-container{
-    .ct;
+    .brochure-nav{
+        height: 46px;
+        line-height: 46px;
+        border-bottom: @border;
+        background-color: #fff;
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+        transition: all .2s;
+        transform: translateZ(0);
+        nav{
+            .ct;
+            .list;
+            ul{
+                .list;
+                justify-content: center;
+                height: 100%;
+                margin: 0;
+                li{
+                    margin-right: 15px;
+                    cursor: pointer;
+                    a{
+                        color: @color6;
+                        text-decoration: none;
+                    }
+                    &:hover{
+                        a{
+                            color:@primary;
+                        }
+                    }
+                    a.active{
+                        color:@primary;
+                    }
+                }
+            }
+            a{
+                height: 100%;
+            }
+        }
+    }
+    .bookList{
+        .list;
+        justify-content: flex-start;
+        cursor: pointer;
+        background: @colorF;
+        &:hover{
+            background: #f7f9f9;
+        }
+        >img{
+            width: 100px;
+            height: 140px;
+            background-size: cover;
+            margin-right: 15px;
+        }
+        .presale{
+            display: inline-block;
+            vertical-align: middle;
+            padding-left: 6px;
+            padding-right: 6px;
+            height: 20px;
+            margin-top: -3px;
+            line-height: 20px;
+            color: #fff;
+            font-size: 12px;
+            cursor: default;
+            margin-right: 8px;
+            border-radius: 2px;
+            background-color: #ed7b11;
+        }
+        .bookDesc{
+            margin-top: 5px;
+            line-height: 20px;
+            height: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            color: #71777c;
+        }
+        .bookAuthor{
+            display: flex;
+            align-items: center;
+            margin-top: 6px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .bookName:hover{
+            color: @primary;
+        }
+        .other{
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            .price{
+                color: #ed7b11;
+                font-size: 18px;
+                margin-right: 15px;
+                display: inline-flex;
+                align-items: center;
+            }
+            .bought{
+                font-size: 14px;
+                color: #ed7b11;
+                margin-right: 15px;
+                display: inline-flex;
+                align-items: center;
+            }
+            .message{
+                position: relative;
+                opacity: .6;
+                font-size: 13px;
+                color: #71777c;
+            }
+            .message:not(:last-child)::after{
+                content: "·";
+                color: rgb(113, 119, 124);
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+        }
+    }
+    .aside{
+        .ant-card-body{
+            padding: 0;
+            img{
+                margin-top: 9px;
+                width: 100%;
+                height: 95px;
+                background-size: 100%;
+            }
+        }
+        .link{
+            .ant-card-body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                a{
+                    flex-grow: 1;
+                    display: flex;
+                    height: 90px;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    color: #71777b;
+                    position: relative;
+                    &:first-child::after{
+                        content: "";
+                        position: absolute;
+                        width: 0;
+                        height: 45px;
+                        top: 50%;
+                        right: 0;
+                        transform: translateY(-50%);
+                        border-right: 1px solid #efefef;
+                    }
+                    &:hover{
+                        background: #f7f9f9;
+                    }
+                    img{
+                        width: auto;
+                        height: 28px;
+                    }
+                }
+            }
+        }
+    }
 }
