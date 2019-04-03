@@ -3,11 +3,11 @@ import {NavLink} from 'react-router-dom';
 import { Badge,Avatar } from 'antd';
 import './topic.less'
 
-function TopicItem({item}){
+function TopicItem({item,showCount}){
     const {id,topicName,topicImage,topicCount,followedNum,topicNum,isFollowed}=item;
     return (
         <div className='topicItem'>
-            <Badge count={topicCount} overflowCount={999}>
+            <Badge count={showCount?topicCount:0} overflowCount={999}>
                 <Avatar shape="square" size={72} src={topicImage} />
             </Badge>
             <div style={{marginLeft:'15px'}}>
