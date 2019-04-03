@@ -66,12 +66,34 @@ class TopicList extends Component {
                     followers:'1002',
                     num:'278'
                 },
-            ]
+            ],
+            storeListData:[]
         };
+    }
+
+    componentDidMount(){
+        const store=[...this.state.topicListData];
+        this.setState({
+            storeListData:[...store]
+        })
     }
 
     handleClick=(val)=>{
         this.props.handleTopic(val);
+    }
+
+    handleSearch=(value)=>{
+        const list=[...this.state.storeListData];
+        if(value!==''){
+            const searchList=list.filter(item=>item.title.indexOf(value)>-1);
+            this.setState({
+                topicListData:searchList
+            })
+        }else{
+            this.setState({
+                topicListData:list
+            })
+        }
     }
     render() {
         const Search = Input.Search;
@@ -79,7 +101,7 @@ class TopicList extends Component {
             <div style={{background:'#fff'}}>
                 <Search
                     placeholder="搜索话题"
-                    onSearch={value => console.log(value)}
+                    onSearch={value => this.handleSearch(value)}
                     style={{ width: '100%' }}
                 />
                 <List
