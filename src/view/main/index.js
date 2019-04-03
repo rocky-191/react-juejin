@@ -37,7 +37,7 @@ class Main extends Component {
                 <Route path='/post/:articleId' component={Post}/>
                 <Route path='/dynamic' component={Dynamic}/>
                 <Route path='/topic' component={Topic}/>
-                <Route path='/brochure' component={Brochure}/>
+                <Route path='/books' component={Brochure}/>
                 <Route path='/activity' component={Activity}/>
             </Switch>
         );

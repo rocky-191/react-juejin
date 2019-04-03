@@ -24,7 +24,7 @@ class Nav extends Component {
                 {
                     text:'小册',
                     isActived:false,
-                    path:'/brochure'
+                    path:'/books'
                 },
                 {
                     text:'活动',
