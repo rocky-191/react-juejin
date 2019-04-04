@@ -28,9 +28,9 @@ class Qrcode extends Component {
                             <img alt={item.text} src={item.image} style={{width:'24px',height:'24px',marginRight:'5px'}} />
                             <label style={{color:'#8f969c'}}>{item.text}</label>
                         </div>
-                        {item.showQrcode?<div style={{textAlign:'center'}}>
+                        {item.showQrcode && <div style={{textAlign:'center'}}>
                             <QRCode value={this.props.value} />
-                        </div>:''}
+                        </div>}
                     </li>
                 })}
             </ul>
