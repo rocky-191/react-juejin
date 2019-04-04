@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Card,Avatar,List } from 'antd';
 import './self.less';
 
