@@ -36,7 +36,7 @@ import './self.less'
 //     }
 // }
 
-function PersonalPop({info,handleFollow}){
+const PersonalPop=React.memo(function({info,handleFollow}){
     const { id,avatar,author,description,following,follower,isFollowed}=info
     return (
         <div className='personalPop'>
@@ -62,6 +62,6 @@ function PersonalPop({info,handleFollow}){
             </ul>
         </div>
     );
-}
+})
 
 export default PersonalPop;

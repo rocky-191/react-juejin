@@ -39,7 +39,8 @@ import timeUtil from '@/utils/setTime';
 //     }
 // }
 
-function CommentElement({commentList}){
+//React.memo新版本中用作HOC,类似于React.pureComponent,优化性能
+const CommentElement=React.memo(function({commentList}){
     const IconText = ({ type, text }) => (
         <span>
             <Icon type={type} style={{ marginRight: 8 }} />
@@ -68,6 +69,6 @@ function CommentElement({commentList}){
             />
         </div>
     );
-}
+})
 
 export default CommentElement;
