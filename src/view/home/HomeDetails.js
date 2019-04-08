@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Tag from '../../components/Tag';
 import List from './List';
+import {getArticleList} from '@/Api/getHomeData'
 
 class HomeDetails extends Component {
     constructor(props) {
@@ -17,60 +18,18 @@ class HomeDetails extends Component {
                 historyHot:'历史最热'
             },
             selectedTag:[],
-            articleList:[
-                {
-                    id:'00001',
-                    author:'Tom大叔',
-                    time:'两小时前',
-                    tags:['css','webpack'],
-                    title:'前端构建秘籍',
-                    articleImage:'//user-gold-cdn.xitu.io/2019/3/19/169944ad67bc2e6c?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1',
-                    starNum:'1',//点赞数
-                    commentNum:'1',//评论数
-                    articleType:'1',//1代表文章类型为专栏，2代表文章类型为小册
-                },
-                {
-                    id:'00002',
-                    author:'js爱好者',
-                    time:'两小时前',
-                    tags:['css','webpack'],
-                    title:'Vue初探',
-                    articleImage:'//gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
-                    starNum:'1',//点赞数
-                    commentNum:'1',//评论数
-                    articleType:'1'
-                },
-                {
-                    id:'00003',
-                    author:'css爱好者',
-                    time:'1天前',
-                    tags:['css'],
-                    title:'css绘制各种图形实例',
-                    articleImage:'',
-                    starNum:'10',//点赞数
-                    commentNum:'12',
-                    articleType:'1'
-                },
-                {
-                    id:'00004',
-                    author:'lucefer',
-                    time:'',
-                    tags:[],
-                    title:'WebGL 入门与实践介绍',
-                    articleImage:'//user-gold-cdn.xitu.io/2019/2/25/16922d6d22ff1458?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1',
-                    starNum:'10',//点赞数
-                    commentNum:'12',
-                    articleType:'2',
-                    sellNums:1000,
-                    price:'19.9'
-                }
-            ]
+            articleList:[]
         }
         this.getTags=this.getTags.bind(this);
     }
 
     componentDidMount(){
         console.log('初始化加载内容',this.props.tag);
+        getArticleList().then((res) => {
+            this.setState({
+                articleList:res.articleList
+            })
+        });
     }
 
     componentDidUpdate(){
