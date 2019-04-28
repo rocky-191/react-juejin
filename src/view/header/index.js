@@ -16,6 +16,7 @@ class Header extends Component {
         message.info('Click on menu item.');
         console.log('click', e.key);
     }
+
     render() {
         const Search = Input.Search;
         const menu = (
@@ -24,6 +25,7 @@ class Header extends Component {
                 <Menu.Item key="2">分享链接</Menu.Item>
             </Menu>
         );
+        const isLogin = this.props.userName!=='' ? true : false;
         return (
             <Affix offsetTop={this.state.top}>
                 <div className="pageHeader">
@@ -48,9 +50,14 @@ class Header extends Component {
                                     <Icon type="notification" />
                                 </a>
                             </Badge>
-                            <Popover placement="bottomRight" content={<SlideMenu userId={this.props.userId} />} trigger="click">
+                            {
+                                isLogin ? <Popover placement="bottomRight" content={<SlideMenu userId={this.props.userId} />} trigger="click">
                                 <Avatar icon="user" src={this.props.userImage} style={{cursor:'pointer'}} />
-                            </Popover>
+                            </Popover>:<div>
+                                <span className="login" onClick={()=>this.props.handlelogin()}>登录</span>
+                                <span className="register">注册</span>
+                            </div>
+                            }
                         </nav>
                     </div>
                 </div>
@@ -62,6 +69,7 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         count: state.pageHeaderReducer.notificationCount,
+        userName:state.userReducer.userName,
         userImage:state.userReducer.userImage,
         userId:state.userReducer.userId
     }
