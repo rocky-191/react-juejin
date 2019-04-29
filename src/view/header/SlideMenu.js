@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from "redux";
+import { connect } from 'react-redux';
+import { actions as authActions } from "../../reducers/userReducer";
 import { Menu, Icon } from 'antd';
 
 class SlideMenu extends Component {
@@ -81,9 +84,14 @@ class SlideMenu extends Component {
         };
     }
     handleClick=(e)=>{
-        console.log('用户id'+this.props.userId);
-        console.log('click', e.keyPath[0])
-        window.location.href='/'+e.keyPath[0];
+        //console.log('用户id'+this.props.userId);
+        //console.log('click', e.keyPath[0])
+        if(e.keyPath[0]==='logout'){
+            this.props.logout();
+            window.location.href="/";
+        }else{
+            window.location.href='/'+e.keyPath[0];
+        }
     }
     render() {
         const SubMenu = Menu.SubMenu;
@@ -111,4 +119,14 @@ class SlideMenu extends Component {
     }
 }
 
-export default SlideMenu;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return bindActionCreators(authActions,dispatch);
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(SlideMenu);

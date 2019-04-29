@@ -43,7 +43,8 @@ class Login extends Component {
     }
     //默认用户名和密码分别为admin和123456
     if(username==='admin' && password==='123456'){
-      this.props.login(username);
+      let userId=username+new Date().getTime();
+      this.props.login({username:username,userId:userId});
       this.props.loginSuccess();
     }else{
       message.error('用户名或者密码不正确！');
